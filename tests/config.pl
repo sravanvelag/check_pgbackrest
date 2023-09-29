@@ -17,7 +17,8 @@ use YAML::XS qw(LoadFile DumpFile);
 ####################################################################################################################################
 my $dbTypes = {
     'PG' => ['12', '13', '14', '15', '16'],
-    'EPAS' => ['12', '13', '14', '15']
+    'EPAS' => ['12', '13', '14', '15', '16']
+    'PGE' => ['12', '13', '14', '15', '16']
 };
 
 my @supportedDockerImages = ('debian:10', 'debian:11', 'ubuntu:20.04', 'ubuntu:22.04', 'centos:7', 'rockylinux:8');
@@ -41,7 +42,7 @@ config.pl [options]
 
  Test Options:
    --architecture       target architecture
-   --db-type            database type ('EPAS' or 'PG')
+   --db-type            database type ('EPAS', 'PGE' or 'PG')
    --db-version         version of database
 
  Docker Options:
