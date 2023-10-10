@@ -18,12 +18,6 @@
     - enable_edb_repo|bool
     - repo_token|length > 1
 
-- name: Update yum info
-  ansible.builtin.shell: yum-config-manager --enable edb-testing && yum --enablerepo=edb clean metadata && yum updateinfo -y
-  when: >
-    ansible_os_family == 'RedHat' and
-    'icinga2' not in group_names
-
 - name: Build staging EDB auth conf
   lineinfile:
     path: /etc/apt/auth.conf.d/edb.conf
