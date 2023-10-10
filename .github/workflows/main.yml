@@ -34,6 +34,7 @@ jobs:
         env:
           EDB_REPO_USERNAME: ${{ secrets.EDB_REPO_USERNAME }}
           EDB_REPO_PASSWORD: ${{ secrets.EDB_REPO_PASSWORD }}
+          EDB_REPO_TOKEN: ${{ secrets.EDB_REPO_TOKEN }}
           ARCH: use-case-1
           CLPATH: /home/runner/clusters
           CLNAME: ${{ matrix.CLNAME }}
@@ -71,6 +72,7 @@ jobs:
         env:
           EDB_REPO_USERNAME: ${{ secrets.EDB_REPO_USERNAME }}
           EDB_REPO_PASSWORD: ${{ secrets.EDB_REPO_PASSWORD }}
+          EDB_REPO_TOKEN: ${{ secrets.EDB_REPO_TOKEN }}
           ARCH: use-case-2
           CLPATH: /home/runner/clusters
           CLNAME: ${{ matrix.CLNAME }}

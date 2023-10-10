@@ -109,6 +109,7 @@ if $DEPLOY; then
     #-----------------------------------------------------------------------------------------------------------------------
     : "${EDB_REPO_USERNAME:?Variable not set or empty}"
     : "${EDB_REPO_PASSWORD:?Variable not set or empty}"
+    : "${EDB_REPO_TOKEN:?Variable not set or empty}"
     export ANSIBLE_HOST_KEY_CHECKING=False
     export ANSIBLE_REMOTE_USER="root"
     ansible-playbook playbooks/deploy.yml -i "$CLUSTER_DIR/inventory" -e cluster_dir=$CLUSTER_DIR

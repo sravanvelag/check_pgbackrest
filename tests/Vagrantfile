@@ -3,6 +3,7 @@ require 'yaml'
 if File.file?('vagrant.yml') and ( custom = YAML.load_file('vagrant.yml') )
     edb_repository_username = custom['edb_repository_username'] if custom.has_key?('edb_repository_username')
     edb_repository_password = custom['edb_repository_password'] if custom.has_key?('edb_repository_password')
+    edb_repository_token = custom['edb_repository_token'] if custom.has_key?('edb_repository_token')
     pgbackrest_git_url      = custom['pgbackrest_git_url']      if custom.has_key?('pgbackrest_git_url')
     pgbackrest_git_branch   = custom['pgbackrest_git_branch']   if custom.has_key?('pgbackrest_git_branch')
 end
@@ -61,6 +62,7 @@ Vagrant.configure(2) do |config|
             "PROFILE" => ENV['PROFILE'],
             "edb_repository_username" => edb_repository_username,
             "edb_repository_password" => edb_repository_password,
+            "edb_repository_token" => edb_repository_token,
             "pgbackrest_git_url" => pgbackrest_git_url,
             "pgbackrest_git_branch" => pgbackrest_git_branch
         },

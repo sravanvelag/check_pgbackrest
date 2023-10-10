@@ -2,6 +2,7 @@
 # https://www.enterprisedb.com/repository-access-thank-you-page
 # edb_repository_username: "username"
 # edb_repository_password: "password"
+# edb_repository_token: "repo_token"
 
 # When building pgBackRest from sources, define which Github repository and branch to use
 # pgbackrest_git_url: "https://github.com/pgbackrest/pgbackrest.git"

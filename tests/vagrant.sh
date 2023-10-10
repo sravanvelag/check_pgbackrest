@@ -30,6 +30,7 @@ fi
 
 [ ! -z "$edb_repository_username" ] && export EDB_REPO_USERNAME=$edb_repository_username
 [ ! -z "$edb_repository_password" ] && export EDB_REPO_PASSWORD=$edb_repository_password
+[ ! -z "$edb_repository_token" ] && export EDB_REPO_TOKEN=$edb_repository_token
 [ ! -z "$pgbackrest_git_url" ] && export EXTRA_VARS="$EXTRA_VARS pgbackrest_git_url=$pgbackrest_git_url"
 [ ! -z "$pgbackrest_git_branch" ] && export EXTRA_VARS="$EXTRA_VARS pgbackrest_git_branch=$pgbackrest_git_branch"
 

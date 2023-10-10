@@ -16,6 +16,7 @@
         that:
           - lookup('env', 'EDB_REPO_USERNAME') != ''
           - lookup('env', 'EDB_REPO_PASSWORD') != ''
+          - lookup('env', 'EDB_REPO_TOKEN') != ''
       run_once: true
 
     # Set some testing facts
@@ -84,6 +85,7 @@
       vars:
         repo_username: "{{ lookup('env', 'EDB_REPO_USERNAME') }}"
         repo_password: "{{ lookup('env', 'EDB_REPO_PASSWORD') }}"
+        repo_token: ""
         enable_edb_repo: true
       when: "pg_type == 'EPAS' and 'icinga2' not in group_names"
 
@@ -92,8 +94,9 @@
         name: sys/testing_repo
         tasks_from: edb-staging
       vars:
-        repo_username: "{{ lookup('env', 'EDB_REPO_USERNAME') }}"
-        repo_password: "{{ lookup('env', 'EDB_REPO_PASSWORD') }}"
+        repo_password: "{{ lookup('env', 'EDB_REPO_TOKEN') }}"
+        edb_repo_base_download: "https://downloads.enterprisedb.com/{{ repo_token }}"
+        edb_repo_script_link: "{{ edb_repo_base_download }}/dev/setup.{{ 'rpm' if ansible_os_family == 'RedHat' else 'deb' }}.sh"
       when: "pg_type == 'EPAS' and pg_version|int > 15"
 
     # Enable yum testing repository for PG beta releases
@@ -102,7 +105,7 @@
         yum-config-manager --enable pgdg{{ pg_version }}-updates-testing
         yum updateinfo -y
       when: >
-        pg_version|int > 16 and
+        pg_version|int > 15 and
         ansible_os_family == 'RedHat' and
         'icinga2' not in group_names
 
